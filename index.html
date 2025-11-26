@@ -100,7 +100,7 @@ button:hover {
     margin-bottom: 20px;
 }
 #more-tools.show {
-    max-height: 500px; /* Adjust based on content */
+    max-height: 500px;
 }
 
 .stats {
@@ -127,6 +127,46 @@ button:hover {
     background: var(--card);
     border-radius: 12px;
     border: 1px solid var(--border);
+}
+
+/* 📱 MOBILE RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px;
+        margin: 5px 0;
+    }
+
+    #main-buttons,
+    #more-tools {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    textarea {
+        height: 200px;
+        font-size: 16px;
+    }
+
+    .toggle-dark {
+        top: 10px;
+        right: 10px;
+        font-size: 13px;
+    }
+
+    .stats {
+        font-size: 13px;
+    }
 }
 </style>
 </head>
@@ -162,9 +202,7 @@ button:hover {
 
 <div class="stats" id="stats">Lines: 0 | Words: 0 | Characters: 0 | Duplicates: 0</div>
 
-<!-- Bottom Content -->
 <div class="ads">
-<!-- Adsense code goes here -->
 <p>Ad Space – Place your Google Adsense or other ad code here.</p>
 </div>
 
@@ -187,7 +225,7 @@ button:hover {
 </div>
 
 <script>
-// Toggle more tools with smooth slide
+// Toggle more tools
 function toggleMoreTools() {
     const more = document.getElementById("more-tools");
     more.classList.toggle("show");
@@ -207,7 +245,7 @@ document.getElementById("inputText").addEventListener("input", function() {
     updateStats(this.value);
 });
 
-// Core functions
+// Main functions remain unchanged...
 function removeDuplicates() {
     let lines = document.getElementById("inputText").value.split(/\r?\n/);
     let unique = [...new Set(lines)];
@@ -285,13 +323,7 @@ function clearAll() {
     document.getElementById("outputText").value = "";
     updateStats("");
 }
-
-// Keyboard shortcuts
-document.addEventListener("keydown", function(e){
-    if(e.ctrlKey && e.key==="Enter") removeDuplicates();
-    if(e.ctrlKey && e.key==="c") copyResult();
-    if(e.ctrlKey && e.key==="l") clearAll();
-});
 </script>
+
 </body>
 </html>
